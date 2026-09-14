@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.jpg" alt="Mimisbrunnr — el pozo de Mímir" width="280">
+</p>
+
 # Mimisbrunnr
 
 Servidor MCP en Go para gestionar memoria persistente de agentes.
