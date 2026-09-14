@@ -1,0 +1,39 @@
+schema: spec-driven
+
+context: |
+  Tech stack: Go 1.26, MCP server via official SDK
+  (github.com/modelcontextprotocol/go-sdk), SQLite via modernc.org/sqlite (no CGO).
+  Architecture: cmd/mimisbrunnr entrypoint; internal/mcp (MCP tools), internal/storage
+  (Store port + factory), internal/storage/sqlite (adapter), internal/config (env).
+  Principle: domain depends on storage.Store, not SQL; additional drivers (e.g. postgres)
+  only behind storage.Open.
+  MCP tools use mimir_ prefix (mimir_ping, mimir_save, mimir_get, mimir_list, mimir_search,
+  mimir_session_start, mimir_session_end, mimir_context). SQLite schema v4.
+  Out of scope today: postgres adapter.
+
+strict_tdd: true
+
+testing:
+  test_command: "go test ./..."
+  build_command: "go build ./cmd/mimisbrunnr"
+  format_command: "gofmt -l ."
+  coverage_command: "go test -cover ./..."
+  coverage_threshold: 0
+
+rules:
+  proposal:
+    - Include non-goals for anything out of scope
+    - Reference baseline specs in openspec/specs/ when extending behavior
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Respect package boundaries (internal/mcp, internal/storage, internal/config)
+    - New storage adapters register only through storage.Open
+  tasks:
+    - Group by phase with hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    - Follow existing code patterns; strict TDD with go test ./...
+  verify:
+    - Run go test ./... and go build ./cmd/mimisbrunnr before marking complete

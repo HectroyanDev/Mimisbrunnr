@@ -1,5 +1,6 @@
 # Binaries
 /mimisbrunnr
+/bin/
 *.exe
 *.test
 *.out
