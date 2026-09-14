@@ -1,0 +1,25 @@
+# Binaries
+/mimisbrunnr
+*.exe
+*.test
+*.out
+
+# Database
+*.db
+*.db-wal
+*.db-shm
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
